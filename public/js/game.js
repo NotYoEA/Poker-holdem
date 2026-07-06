@@ -143,13 +143,13 @@ function makeFaceDownCard(small = false) {
 
 // Seat positions around the oval (for up to 6 players)
 // Coordinates as % of table width/height, starting from bottom-center going clockwise
+// Seat positions — el óvalo está centrado en ~43% vertical (subido por el action panel)
 const SEAT_POSITIONS = [
-  // We place other players, not self (self is fixed at bottom)
-  { left: '50%', top: '12%' },  // top center
-  { left: '15%', top: '22%' },  // top left
-  { left: '82%', top: '22%' },  // top right
-  { left: '12%', top: '65%' },  // bottom left
-  { left: '85%', top: '65%' },  // bottom right
+  { left: '50%',  top:  '7%' },  // top center
+  { left: '14%',  top: '16%' },  // top left
+  { left: '83%',  top: '16%' },  // top right
+  { left: '10%',  top: '55%' },  // bottom left
+  { left: '87%',  top: '55%' },  // bottom right
 ];
 
 function renderGameState(state) {
