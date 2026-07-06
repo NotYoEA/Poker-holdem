@@ -23,10 +23,10 @@
   --chip-red:   #9f2d2d;
   --chip-green: #1a5c35;
   --shadow:     0 8px 32px rgba(0,0,0,.6);
-  --card-w:     80px;
-  --card-h:     112px;
+  --card-w:     100px;
+  --card-h:     140px;
   --radius:     12px;
-  --action-h:   110px;
+  --action-h:   115px;
 }
 
 html, body {
@@ -443,7 +443,7 @@ input::placeholder { color: var(--text-muted); }
 
 .community-cards {
   display: flex;
-  gap: .6rem;
+  gap: .8rem;
   min-height: var(--card-h);
   align-items: center;
 }
@@ -566,7 +566,7 @@ input::placeholder { color: var(--text-muted); }
 }
 .my-bet.hidden { display: none; }
 
-.my-cards { display: flex; gap: .5rem; }
+.my-cards { display: flex; gap: .8rem; }
 
 /* Action panel — altura fija igual a --action-h */
 .action-panel {
@@ -797,13 +797,13 @@ input::placeholder { color: var(--text-muted); }
   position: absolute;
   top: 6px;
   left: 9px;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 1;
 }
 
 .card .suit-big {
-  font-size: 2.6rem;
+  font-size: 3rem;
   line-height: 1;
 }
 
@@ -811,7 +811,7 @@ input::placeholder { color: var(--text-muted); }
   position: absolute;
   bottom: 6px;
   right: 9px;
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 700;
   line-height: 1;
   transform: rotate(180deg);
@@ -851,17 +851,17 @@ input::placeholder { color: var(--text-muted); }
 
 /* My cards — grandes y bien visibles */
 .my-cards .card {
-  --card-w: 110px;
-  --card-h: 154px;
-  width: 110px;
-  height: 154px;
+  --card-w: 130px;
+  --card-h: 182px;
+  width: 130px;
+  height: 182px;
   font-size: 1.5rem;
   box-shadow: 0 6px 24px rgba(0,0,0,.6), 0 0 0 2px rgba(201,168,76,.15);
 }
-.my-cards .card .rank     { font-size: 1.2rem; top: 7px; left: 9px; }
-.my-cards .card .suit-big { font-size: 2.8rem; }
-.my-cards .card .rank-bot { font-size: 1.2rem; bottom: 7px; right: 9px; }
-.my-cards .card:hover { transform: translateY(-6px); }
+.my-cards .card .rank     { font-size: 1.4rem; top: 8px; left: 10px; }
+.my-cards .card .suit-big { font-size: 3.2rem; }
+.my-cards .card .rank-bot { font-size: 1.4rem; bottom: 8px; right: 10px; }
+.my-cards .card:hover { transform: translateY(-8px); }
 
 /* Community card appear */
 .card.reveal {
