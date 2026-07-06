@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poker Hold'em | Online</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ========== LOBBY ========== -->
+<div id="lobby" class="screen active">
+  <div class="lobby-bg"></div>
+  <div class="lobby-content">
+    <div class="logo">
+      <span class="logo-suit">♠</span>
+      <h1>ROYAL<br><span>HOLD'EM</span></h1>
+      <span class="logo-suit">♥</span>
+    </div>
+    <p class="tagline">Texas Hold'em · Hasta 6 jugadores · Online</p>
+
+    <div class="card-ui">
+      <div class="input-group">
+        <label>Tu nombre</label>
+        <input id="playerName" type="text" placeholder="Ej: El Matador" maxlength="16" autocomplete="off">
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="createRoom()">
+          <span>♠</span> Crear Sala
+        </button>
+      </div>
+
+      <div class="divider"><span>o únete con código</span></div>
+
+      <div class="join-row">
+        <input id="roomCodeInput" type="text" placeholder="Código de sala" maxlength="6" class="room-code-input">
+        <button class="btn btn-secondary" onclick="joinRoom()">Unirse</button>
+      </div>
+
+      <p id="lobbyError" class="error-msg"></p>
+    </div>
+
+    <div class="lobby-suits">♠ ♥ ♦ ♣</div>
+  </div>
+</div>
+
+<!-- ========== WAITING ROOM ========== -->
+<div id="waitingRoom" class="screen">
+  <div class="waiting-content">
+    <div class="room-header">
+      <h2>Sala: <span id="roomCodeDisplay" class="room-code"></span></h2>
+      <button class="btn-icon" onclick="copyRoomCode()" title="Copiar código">📋</button>
+    </div>
+    <p class="waiting-sub">Comparte el código con tus amigos</p>
+
+    <div id="waitingPlayers" class="waiting-players"></div>
+
+    <div id="waitingActions">
+      <button id="startBtn" class="btn btn-primary btn-large" onclick="startGame()" style="display:none">
+        🃏 Iniciar Partida
+      </button>
+      <p id="waitingHint" class="hint-text">Esperando al host para iniciar...</p>
+    </div>
+
+    <div id="waitingLog" class="log-mini"></div>
+
+    <button class="btn btn-ghost" onclick="leaveGame()">← Salir</button>
+  </div>
+</div>
+
+<!-- ========== GAME TABLE ========== -->
+<div id="gameTable" class="screen">
+  <div class="table-container">
+
+    <!-- Top bar -->
+    <div class="top-bar">
+      <div class="room-tag">Sala: <strong id="gameRoomCode"></strong></div>
+      <div class="pot-display">POT: <strong id="potAmount">0</strong></div>
+      <div class="phase-tag" id="phaseTag">Pre-Flop</div>
+    </div>
+
+    <!-- Community cards -->
+    <div class="community-area">
+      <div id="communityCards" class="community-cards"></div>
+    </div>
+
+    <!-- Players around the table -->
+    <div id="tableSeats" class="table-seats"></div>
+
+    <!-- My hand -->
+    <div class="my-area">
+      <div class="my-info">
+        <span id="myName" class="my-name">Jugador</span>
+        <span id="myChips" class="my-chips">🪙 1000</span>
+        <span id="myBet" class="my-bet hidden"></span>
+      </div>
+      <div id="myCards" class="my-cards"></div>
+    </div>
+
+    <!-- Action panel -->
+    <div id="actionPanel" class="action-panel hidden">
+      <div class="action-info">
+        <span id="callAmount" class="call-info"></span>
+      </div>
+      <div class="action-buttons">
+        <button class="btn-action btn-fold" onclick="doAction('fold')">Retirarse</button>
+        <button class="btn-action btn-check" id="checkBtn" onclick="doAction('check')">Pasar</button>
+        <button class="btn-action btn-call" id="callBtn" onclick="doAction('call')">Pagar</button>
+        <button class="btn-action btn-raise" onclick="openRaise()">Apostar</button>
+        <button class="btn-action btn-allin" onclick="doAction('allin')">All-In 🔥</button>
+      </div>
+    </div>
+
+    <!-- Raise panel -->
+    <div id="raisePanel" class="raise-panel hidden">
+      <div class="raise-content">
+        <h3>¿Cuánto apostar?</h3>
+        <div class="raise-slider-row">
+          <input type="range" id="raiseSlider" min="0" max="1000" value="0" oninput="updateRaiseDisplay()">
+          <input type="number" id="raiseInput" value="0" min="0" oninput="syncSliderFromInput()">
+        </div>
+        <div class="raise-presets" id="raisePresets"></div>
+        <div class="raise-actions">
+          <button class="btn btn-ghost" onclick="closeRaise()">Cancelar</button>
+          <button class="btn btn-primary" onclick="confirmRaise()">Apostar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Showdown overlay -->
+    <div id="showdownOverlay" class="showdown-overlay hidden">
+      <div class="showdown-content">
+        <h2>🏆 Resultado</h2>
+        <div id="showdownWinners"></div>
+        <div id="showdownCards" class="showdown-cards"></div>
+        <div id="nextHandBtn" style="margin-top:1rem;display:none">
+          <button class="btn btn-primary" onclick="startNextHand()">Siguiente Mano</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Log + Chat -->
+    <div class="side-panel">
+      <div class="log-container">
+        <div class="log-title">📜 Registro</div>
+        <div id="gameLog" class="game-log"></div>
+      </div>
+      <div class="chat-container">
+        <input id="chatInput" type="text" placeholder="Mensaje..." maxlength="80" onkeydown="if(event.key==='Enter') sendChat()">
+        <button onclick="sendChat()">➤</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
