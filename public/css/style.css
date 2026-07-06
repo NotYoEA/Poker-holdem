@@ -23,8 +23,8 @@
   --chip-red:   #9f2d2d;
   --chip-green: #1a5c35;
   --shadow:     0 8px 32px rgba(0,0,0,.6);
-  --card-w:     70px;
-  --card-h:     98px;
+  --card-w:     90px;
+  --card-h:     126px;
   --radius:     12px;
 }
 
@@ -381,10 +381,10 @@ input::placeholder { color: var(--text-muted); }
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: min(85vw, 900px);
-  height: min(70vh, 500px);
+  width: min(88vw, 1100px);
+  height: min(74vh, 580px);
   border-radius: 50%;
-  border: 12px solid var(--gold-dim);
+  border: 14px solid var(--gold-dim);
   box-shadow:
     0 0 0 3px rgba(201,168,76,.15),
     0 0 60px rgba(0,0,0,.5),
@@ -410,10 +410,10 @@ input::placeholder { color: var(--text-muted); }
 
 .pot-display {
   font-family: 'Cinzel', serif;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: var(--gold-light);
 }
-.pot-display strong { font-size: 1.4rem; }
+.pot-display strong { font-size: 1.6rem; }
 
 .phase-tag {
   font-size: .75rem;
@@ -472,31 +472,33 @@ input::placeholder { color: var(--text-muted); }
 }
 
 .seat-name {
-  font-size: .75rem;
+  font-size: .9rem;
   color: var(--text);
-  background: rgba(0,0,0,.6);
-  padding: .2rem .5rem;
+  background: rgba(0,0,0,.7);
+  padding: .3rem .7rem;
   border-radius: 20px;
   white-space: nowrap;
-  max-width: 90px;
+  max-width: 110px;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 .seat-chips {
-  font-size: .7rem;
+  font-size: .82rem;
   color: var(--gold);
-  background: rgba(0,0,0,.5);
-  padding: .1rem .4rem;
+  background: rgba(0,0,0,.6);
+  padding: .15rem .5rem;
   border-radius: 20px;
 }
 
 .seat-bet {
-  font-size: .65rem;
+  font-size: .78rem;
   color: #fff;
   background: var(--red);
-  padding: .1rem .35rem;
+  padding: .15rem .45rem;
   border-radius: 20px;
+  font-weight: 600;
 }
 
 .seat-cards {
@@ -505,8 +507,8 @@ input::placeholder { color: var(--text-muted); }
 }
 
 .seat-badge {
-  font-size: .6rem;
-  padding: .1rem .35rem;
+  font-size: .72rem;
+  padding: .15rem .45rem;
   border-radius: 10px;
   font-weight: 700;
   letter-spacing: .03em;
@@ -531,7 +533,7 @@ input::placeholder { color: var(--text-muted); }
 /* My area */
 .my-area {
   position: absolute;
-  bottom: 130px;
+  bottom: 145px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 6;
@@ -551,8 +553,8 @@ input::placeholder { color: var(--text-muted); }
   padding: .4rem 1rem;
 }
 
-.my-name { font-size: .85rem; font-weight: 600; }
-.my-chips { font-size: .85rem; color: var(--gold); }
+.my-name { font-size: 1rem; font-weight: 600; }
+.my-chips { font-size: 1rem; color: var(--gold); }
 .my-bet {
   font-size: .75rem;
   color: #fff;
@@ -574,14 +576,14 @@ input::placeholder { color: var(--text-muted); }
   background: rgba(0,0,0,.75);
   backdrop-filter: blur(12px);
   border-top: 1px solid rgba(201,168,76,.2);
-  padding: .75rem 1rem;
+  padding: 1rem 1.5rem;
   display: flex;
   flex-direction: column;
   gap: .5rem;
 }
 .action-panel.hidden { display: none; }
 
-.action-info { text-align: center; font-size: .8rem; color: var(--text-muted); min-height: 1.2em; }
+.action-info { text-align: center; font-size: .92rem; color: var(--text-muted); min-height: 1.4em; }
 .call-info { color: var(--gold-light); }
 
 .action-buttons {
@@ -592,11 +594,11 @@ input::placeholder { color: var(--text-muted); }
 }
 
 .btn-action {
-  padding: .65rem 1.1rem;
+  padding: .8rem 1.4rem;
   border: none;
   border-radius: 8px;
   font-family: 'Cinzel', serif;
-  font-size: .78rem;
+  font-size: .88rem;
   font-weight: 700;
   letter-spacing: .06em;
   cursor: pointer;
@@ -790,23 +792,23 @@ input::placeholder { color: var(--text-muted); }
 
 .card .rank {
   position: absolute;
-  top: 4px;
-  left: 6px;
-  font-size: .75rem;
+  top: 5px;
+  left: 7px;
+  font-size: .95rem;
   font-weight: 700;
   line-height: 1;
 }
 
 .card .suit-big {
-  font-size: 1.6rem;
+  font-size: 2rem;
   line-height: 1;
 }
 
 .card .rank-bot {
   position: absolute;
-  bottom: 4px;
-  right: 6px;
-  font-size: .75rem;
+  bottom: 5px;
+  right: 7px;
+  font-size: .95rem;
   font-weight: 700;
   line-height: 1;
   transform: rotate(180deg);
@@ -846,10 +848,10 @@ input::placeholder { color: var(--text-muted); }
 
 /* My cards glow */
 .my-cards .card {
-  --card-w: 80px;
-  --card-h: 112px;
-  width: 80px;
-  height: 112px;
+  --card-w: 100px;
+  --card-h: 140px;
+  width: 100px;
+  height: 140px;
 }
 .my-cards .card:hover { transform: translateY(-4px); }
 
