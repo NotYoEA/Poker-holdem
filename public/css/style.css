@@ -23,8 +23,8 @@
   --chip-red:   #9f2d2d;
   --chip-green: #1a5c35;
   --shadow:     0 8px 32px rgba(0,0,0,.6);
-  --card-w:     90px;
-  --card-h:     126px;
+  --card-w:     110px;
+  --card-h:     154px;
   --radius:     12px;
 }
 
@@ -533,7 +533,7 @@ input::placeholder { color: var(--text-muted); }
 /* My area */
 .my-area {
   position: absolute;
-  bottom: 145px;
+  bottom: 160px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 6;
@@ -792,23 +792,23 @@ input::placeholder { color: var(--text-muted); }
 
 .card .rank {
   position: absolute;
-  top: 5px;
-  left: 7px;
-  font-size: .95rem;
+  top: 6px;
+  left: 9px;
+  font-size: 1.15rem;
   font-weight: 700;
   line-height: 1;
 }
 
 .card .suit-big {
-  font-size: 2rem;
+  font-size: 2.6rem;
   line-height: 1;
 }
 
 .card .rank-bot {
   position: absolute;
-  bottom: 5px;
-  right: 7px;
-  font-size: .95rem;
+  bottom: 6px;
+  right: 9px;
+  font-size: 1.15rem;
   font-weight: 700;
   line-height: 1;
   transform: rotate(180deg);
@@ -848,10 +848,10 @@ input::placeholder { color: var(--text-muted); }
 
 /* My cards glow */
 .my-cards .card {
-  --card-w: 100px;
-  --card-h: 140px;
-  width: 100px;
-  height: 140px;
+  --card-w: 120px;
+  --card-h: 168px;
+  width: 120px;
+  height: 168px;
 }
 .my-cards .card:hover { transform: translateY(-4px); }
 
